@@ -4,5 +4,6 @@
     <string name="app_name">Kacak</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_single_player">singlePlayer</string>
 
 </resources>
