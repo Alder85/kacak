@@ -30,7 +30,8 @@
         android:text="Multiplayer"
         android:id="@+id/startMulti"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="multiPlayer"/>
 
     <Button
         android:layout_width="wrap_content"

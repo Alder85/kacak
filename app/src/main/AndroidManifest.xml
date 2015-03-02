@@ -20,6 +20,10 @@
             android:name=".singlePlayer"
             android:label="@string/title_activity_single_player" >
         </activity>
+        <activity
+            android:name=".multiPlayer"
+            android:label="@string/title_activity_multi_player" >
+        </activity>
     </application>
 
 </manifest>
