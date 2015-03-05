@@ -8,32 +8,22 @@ import android.view.MenuItem;
 
 public class singlePlayer extends ActionBarActivity {
 
+    int heart = 1, club = 2, diamond = 3, spade = 4;
+    int ace = 1, two = 2, three = 3, four = 4, five = 5, six = 6,
+    seven = 7, eight = 8, nine = 9, ten = 10, jack = 11, queen = 12, king = 13;
+    Card[][] cardArray = new Card[4][12];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
-    }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_single_player, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        for(int i = 1;i < 5;i++) {  //1-4
+            for(int q = 1;q < 13;q++) {  //1- 12
+                cardArray[i][q] = new Card(i, q);
+            }
         }
 
-        return super.onOptionsItemSelected(item);
     }
+
 }
