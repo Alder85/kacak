@@ -92,7 +92,35 @@ public class Card {
     }
 
     public String toString() {
-        return "Suit = " + suit + "\nValue = " + value;
+        String val = "";
+        String suitVal = "";
+        switch(value) {
+            case 1: val = "Ace";
+                break;
+            case 11: val = "Jack";
+                break;
+            case 12: val = "Queen";
+                break;
+            case 13: val = "King";
+                break;
+            default: val = value + "";
+                break;
+
+        }
+        //heart club diamond spade
+        switch(suit) {
+            case 1: suitVal = "Hearts.";
+                break;
+            case 2: suitVal = "Clubs.";
+                break;
+            case 3: suitVal = "Diamonds.";
+                break;
+            case 4: suitVal = "Spades.";
+                break;
+            default: suitVal = "Invalid. YOU ARE POTATOE.";
+                break;
+        }
+        return val + " of " + suitVal;
     }
 
 }
