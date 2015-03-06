@@ -29,26 +29,26 @@ public class singlePlayer extends ActionBarActivity {
         }
 
         int currRand;
-        for (int i = 0; i < playerHand.length; i++) {
-            if (playerHand[i] == null) {
-                while (playerHand[i] == null) {
-                    currRand = randomInt();
-                    if(!(cardArray[currRand] == null)) {
-                        playerHand[i] = new Card(cardArray[currRand]);
-                        cardArray[currRand] = null;
-                    }
+        int playerCounter = 0;
+        int computerCounter = 0;
+        int maxDeck = cardArray.length / 2;
+        for (int i = 0; i < cardArray.length; i++) {
+            if(playerCounter < maxDeck && computerCounter < maxDeck) {
+                currRand = randomInt(2);
+                if(currRand == 0) {
+                    playerHand[playerCounter] = new Card(cardArray[i]);
+                    playerCounter++;
+                } else {
+                    computerHand[computerCounter] = new Card(cardArray[i]);
+                    computerCounter++;
                 }
+            } else if(computerCounter < maxDeck) {
+                computerHand[computerCounter] = new Card(cardArray[i]);
+                computerCounter++;
             }
-        }
-        for (int i = 0; i < computerHand.length; i++) {
-            if (computerHand[i] == null) {
-                while (computerHand[i] == null) {
-                    currRand = randomInt();
-                    if(!(cardArray[currRand] == null)) {
-                        computerHand[i] = new Card(cardArray[currRand]);
-                        cardArray[currRand] = null;
-                    }
-                }
+            else {
+                playerHand[playerCounter] = new Card(cardArray[i]);
+                playerCounter++;
             }
         }
         Card potatoe = new Card();
@@ -56,10 +56,11 @@ public class singlePlayer extends ActionBarActivity {
 
     /**
      * randomInt simplifies returning a specific random number
-     * @return A number between 0 and 51, inclusive (1 - 52)
+     * @param num What range of random numbers
+     * @return A number between 0 and num, inclusive (0 - num)
      */
-    public static int randomInt()
+    public static int randomInt(int num)
     {
-        return (int)(Math.random() * 52);
+        return (int)(Math.random() * num);
     }
 }
