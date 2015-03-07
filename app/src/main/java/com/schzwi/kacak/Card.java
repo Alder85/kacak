@@ -5,8 +5,8 @@ package com.schzwi.kacak;
  * Created by Josh on 3/5/2015.
  */
 public class Card {
-    private int suit = 0;
-    private int value = 0;
+    private int suit;
+    private int value;
     private boolean activated;
 
     public Card(int suitIn, int valueIn) {
@@ -22,8 +22,6 @@ public class Card {
         value = x.getValue();
     }
     public Card() { //null
-        suit = 0;
-        value = 0;
     }
 
     public int getAttack() {

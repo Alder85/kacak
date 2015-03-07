@@ -12,7 +12,7 @@
         tools:context="com.schzwi.kacak.singlePlayer"
         android:weightSum="5">
 
-        <!-- 0 -->
+        <!-- 1 -->
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="fill_parent"
@@ -56,7 +56,7 @@
             android:layout_height="2dip"
             android:background="#FF0000" />
 
-        <!-- 1 -->
+        <!-- 2 -->
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="fill_parent"
@@ -145,7 +145,7 @@
             android:layout_height="2dip"
             android:background="#FF0000" />
 
-        <!-- 3 -->
+        <!-- 4 -->
         <TableRow
             android:id="@+id/tableRow4"
             android:layout_width="fill_parent"
@@ -190,7 +190,7 @@
             android:layout_height="2dip"
             android:background="#FF0000" />
 
-        <!-- 4 -->
+        <!-- 5 -->
         <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="fill_parent"

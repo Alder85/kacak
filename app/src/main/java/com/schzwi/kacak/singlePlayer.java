@@ -2,8 +2,6 @@ package com.schzwi.kacak;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class singlePlayer extends ActionBarActivity {
@@ -12,8 +10,17 @@ public class singlePlayer extends ActionBarActivity {
     int ace = 1, two = 2, three = 3, four = 4, five = 5, six = 6,
     seven = 7, eight = 8, nine = 9, ten = 10, jack = 11, queen = 12, king = 13;
     Card[] cardArray = new Card[52];
-    Card[] playerHand = new Card[26];
-    Card[] computerHand = new Card[26];  //half of default
+
+    Card[] playerDeck = new Card[26];
+    Card[] playerHand = new Card[5];
+    Card[] playerTrap = new Card[5];
+    Card[] playerMonsters = new Card[5];
+
+    Card[] computerDeck = new Card[26];  //half of default
+    Card[] computerHand = new Card[5];
+    Card[] computerTrap = new Card[5];
+    Card[] computerMonsters = new Card[5];
+
     Card[] discard = new Card[52]; //could hold entire deck if necessary
 
     @Override
@@ -36,24 +43,36 @@ public class singlePlayer extends ActionBarActivity {
             if(playerCounter < maxDeck && computerCounter < maxDeck) {
                 currRand = randomInt(2);
                 if(currRand == 0) {
-                    playerHand[playerCounter] = new Card(cardArray[i]);
+                    playerDeck[playerCounter] = new Card(cardArray[i]);
                     playerCounter++;
                 } else {
-                    computerHand[computerCounter] = new Card(cardArray[i]);
+                    computerDeck[computerCounter] = new Card(cardArray[i]);
                     computerCounter++;
                 }
             } else if(computerCounter < maxDeck) {
-                computerHand[computerCounter] = new Card(cardArray[i]);
+                computerDeck[computerCounter] = new Card(cardArray[i]);
                 computerCounter++;
             }
             else {
-                playerHand[playerCounter] = new Card(cardArray[i]);
+                playerDeck[playerCounter] = new Card(cardArray[i]);
                 playerCounter++;
             }
         }
         Card potatoe = new Card();
     }
 
+    public void updatePlayerHand() {
+        for(int i = 0;i < playerHand.length;i++) {
+            if(playerHand[i].equals(null)) {
+                for(int q = 0;q < playerDeck.length;q++) {
+                    if(!(playerDeck[q].equals(null))) {
+                        playerHand[i] = new Card(playerDeck[q]);
+                        playerDeck[q] = new Card();
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * randomInt simplifies returning a specific random number
