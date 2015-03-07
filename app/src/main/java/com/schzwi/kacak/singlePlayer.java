@@ -8,19 +8,10 @@ public class singlePlayer extends ActionBarActivity {
 
     int heart = 1, club = 2, diamond = 3, spade = 4;
     int ace = 1, two = 2, three = 3, four = 4, five = 5, six = 6,
-    seven = 7, eight = 8, nine = 9, ten = 10, jack = 11, queen = 12, king = 13;
+            seven = 7, eight = 8, nine = 9, ten = 10, jack = 11, queen = 12, king = 13;
     Card[] cardArray = new Card[52];
-
-    Card[] playerDeck = new Card[26];
-    Card[] playerHand = new Card[5];
-    Card[] playerTrap = new Card[5];
-    Card[] playerMonsters = new Card[5];
-
-    Card[] computerDeck = new Card[26];  //half of default
-    Card[] computerHand = new Card[5];
-    Card[] computerTrap = new Card[5];
-    Card[] computerMonsters = new Card[5];
-
+    Card[] playerDeck = new Card[cardArray.length / 2];
+    Card[] computerDeck = new Card[cardArray.length / 2];  //half of default
     Card[] discard = new Card[52]; //could hold entire deck if necessary
 
     @Override
@@ -57,22 +48,11 @@ public class singlePlayer extends ActionBarActivity {
                 playerDeck[playerCounter] = new Card(cardArray[i]);
                 playerCounter++;
             }
+            cardArray[i] = null;
         }
         Card potatoe = new Card();
     }
 
-    public void updatePlayerHand() {
-        for(int i = 0;i < playerHand.length;i++) {
-            if(playerHand[i].equals(null)) {
-                for(int q = 0;q < playerDeck.length;q++) {
-                    if(!(playerDeck[q].equals(null))) {
-                        playerHand[i] = new Card(playerDeck[q]);
-                        playerDeck[q] = new Card();
-                    }
-                }
-            }
-        }
-    }
 
     /**
      * randomInt simplifies returning a specific random number
@@ -82,5 +62,19 @@ public class singlePlayer extends ActionBarActivity {
     public static int randomInt(int num)
     {
         return (int)(Math.random() * num);
+    }
+
+    public void shuffleDeck(int deck) {
+        Card tempCard = new Card();
+        if(deck == 0) {
+            for(int i = 0; i < 100; i++) {
+                int randCardLocation1 = randomInt(26);
+                int randCardLocation2 = randomInt(26);
+            }
+        } else if(deck == 1) {
+
+        } else {
+
+        }
     }
 }
