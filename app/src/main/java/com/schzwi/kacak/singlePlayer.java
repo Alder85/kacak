@@ -54,6 +54,7 @@ public class singlePlayer extends ActionBarActivity {
         Card potatoe = new Card();
     }
 
+
     /**
      * randomInt simplifies returning a specific random number
      * @param num What range of random numbers
