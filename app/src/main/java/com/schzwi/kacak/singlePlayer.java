@@ -1,7 +1,9 @@
 package com.schzwi.kacak;
 
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 
 public class singlePlayer extends ActionBarActivity {
@@ -55,20 +57,32 @@ public class singlePlayer extends ActionBarActivity {
                 playerCounter++;
             }
         }
-        Card potatoe = new Card();
+        updatePlayerHand();
     }
 
     public void updatePlayerHand() {
         for(int i = 0;i < playerHand.length;i++) {
-            if(playerHand[i].equals(null)) {
+            if(playerHand[i] == null) {
                 for(int q = 0;q < playerDeck.length;q++) {
-                    if(!(playerDeck[q].equals(null))) {
+                    if(!(playerDeck[q] == null)) {
                         playerHand[i] = new Card(playerDeck[q]);
-                        playerDeck[q] = new Card();
+                        playerDeck[q] = null;
                     }
+                    if(playerHand[i] != null)
+                        break;
                 }
             }
         }
+        ImageView hand1 = (ImageView)findViewById(R.id.img4_0);
+        ImageView hand2 = (ImageView)findViewById(R.id.img4_1);
+        ImageView hand3 = (ImageView)findViewById(R.id.img4_2);
+        ImageView hand4 = (ImageView)findViewById(R.id.img4_3);
+        ImageView hand5 = (ImageView)findViewById(R.id.img4_4);
+        hand1.setImageResource(R.drawable.card_back);
+        hand2.setImageResource(R.drawable.card_back);
+        hand3.setImageResource(R.drawable.card_back);
+        hand4.setImageResource(R.drawable.card_back);
+        hand5.setImageResource(R.drawable.card_back);
     }
     /**
      * randomInt simplifies returning a specific random number
