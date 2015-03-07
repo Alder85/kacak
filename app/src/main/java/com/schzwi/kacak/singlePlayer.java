@@ -32,7 +32,7 @@ public class singlePlayer extends ActionBarActivity {
         int playerCounter = 0;
         int computerCounter = 0;
         int maxDeck = cardArray.length / 2;
-        for (int i = 0; i < cardArray.length; i++) {
+        for (int i = 0; i < cardArray.length; i++) { //consider for:each
             if(playerCounter < maxDeck && computerCounter < maxDeck) {
                 currRand = randomInt(2);
                 if(currRand == 0) {
