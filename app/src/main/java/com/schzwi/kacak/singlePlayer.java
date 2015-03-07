@@ -83,14 +83,25 @@ public class singlePlayer extends ActionBarActivity {
     public void shuffleDeck(int deck) {
         Card tempCard = new Card();
         if(deck == 0) {
-            for(int i = 0; i < 100; i++) {
+            for(int i = 0; i < 500; i++) {
                 int randCardLocation1 = randomInt(26);
                 int randCardLocation2 = randomInt(26);
+                if(randCardLocation1 != randCardLocation2) {
+                    tempCard = playerDeck[randCardLocation1];
+                    playerDeck[randCardLocation1] = playerDeck[randCardLocation2];
+                    playerDeck[randCardLocation2] = tempCard;
+                }
             }
-        } else if(deck == 1) {
-
         } else {
-
+            for(int i = 0; i < 500; i++) {
+                int randCardLocation1 = randomInt(26);
+                int randCardLocation2 = randomInt(26);
+                if(randCardLocation1 != randCardLocation2) {
+                    tempCard = computerDeck[randCardLocation1];
+                    computerDeck[randCardLocation1] = computerDeck[randCardLocation2];
+                    computerDeck[randCardLocation2] = tempCard;
+                }
+            }
         }
     }
 }
