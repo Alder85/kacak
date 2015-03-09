@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 public class singlePlayer extends ActionBarActivity {
 
+    int player = 0, computer = 47;
     Card[] cardArray = new Card[52];
 
     Card[] playerDeck = new Card[26];
@@ -57,6 +58,7 @@ public class singlePlayer extends ActionBarActivity {
                 playerCounter++;
             }
         }
+        shuffleDeck(player); //so suits aren't int order
         updatePlayerHand();
     }
 
@@ -66,6 +68,7 @@ public class singlePlayer extends ActionBarActivity {
                 for(int q = 0;q < playerDeck.length;q++) {
                     if(!(playerDeck[q] == null)) {
                         playerHand[i] = new Card(playerDeck[q]);
+                        playerHand[i].setRevealed(true);
                         playerDeck[q] = null;
                     }
                     if(playerHand[i] != null)
@@ -78,11 +81,12 @@ public class singlePlayer extends ActionBarActivity {
         ImageView hand3 = (ImageView)findViewById(R.id.img4_2);
         ImageView hand4 = (ImageView)findViewById(R.id.img4_3);
         ImageView hand5 = (ImageView)findViewById(R.id.img4_4);
-        hand1.setImageResource(R.drawable.card_back);
-        hand2.setImageResource(R.drawable.card_back);
-        hand3.setImageResource(R.drawable.card_back);
-        hand4.setImageResource(R.drawable.card_back);
-        hand5.setImageResource(R.drawable.card_back);
+        hand1.setImageResource(playerHand[0].getImage());
+        hand2.setImageResource(playerHand[1].getImage());
+        hand3.setImageResource(playerHand[2].getImage());
+        hand4.setImageResource(playerHand[3].getImage());
+        hand5.setImageResource(playerHand[4].getImage());
+
     }
     /**
      * randomInt simplifies returning a specific random number

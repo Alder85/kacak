@@ -200,7 +200,7 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
-                android:maxWidth="5dip"
+                android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_0"
@@ -211,7 +211,7 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
-                android:maxWidth="5dip"
+                android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_1"
@@ -221,7 +221,7 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
-                android:maxWidth="5dip"
+                android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_2"
@@ -231,7 +231,7 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
-                android:maxWidth="5dip"
+                android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_3"
@@ -241,7 +241,7 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
-                android:maxWidth="5dip"
+                android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_4"
