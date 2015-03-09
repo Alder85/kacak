@@ -3,6 +3,7 @@ package com.schzwi.kacak;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 
 
@@ -23,6 +24,7 @@ public class singlePlayer extends ActionBarActivity {
 
     Card[] discard = new Card[52]; //could hold entire deck if necessary
 
+    Card backCard = new Card();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,11 +83,13 @@ public class singlePlayer extends ActionBarActivity {
         ImageView hand3 = (ImageView)findViewById(R.id.img4_2);
         ImageView hand4 = (ImageView)findViewById(R.id.img4_3);
         ImageView hand5 = (ImageView)findViewById(R.id.img4_4);
+
         hand1.setImageResource(playerHand[0].getImage());
         hand2.setImageResource(playerHand[1].getImage());
         hand3.setImageResource(playerHand[2].getImage());
         hand4.setImageResource(playerHand[3].getImage());
         hand5.setImageResource(playerHand[4].getImage());
+
 
     }
     /**
@@ -122,5 +126,22 @@ public class singlePlayer extends ActionBarActivity {
             }
         }
     }
+
+
+    public boolean onTouchEvent(MotionEvent touchEvent)
+    {
+        ImageView hand1 = (ImageView)findViewById(R.id.img4_0);
+        switch(touchEvent.getAction())
+        {
+            case MotionEvent.ACTION_UP:
+            {
+                hand1.setImageResource(backCard.getImage());
+
+            }
+        }
+        return false;
+    }
+
+
 }
 
