@@ -16,6 +16,7 @@ import android.widget.ImageView;
 public class singlePlayer extends ActionBarActivity {
 
     int player = 0, computer = 47;
+    boolean cardSelected;
     Card[] cardArray = new Card[52];
 
     Card[] playerDeck = new Card[26];
@@ -42,27 +43,77 @@ public class singlePlayer extends ActionBarActivity {
 
         hand[0].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setSelected(playerHand[0], hand[0]);
+                if(playerHand[0].isSelected()) {
+                    unSelect(playerHand[0], hand[0]);
+                    playerHand[0].setMselected(false);
+                    cardSelected = false;
+                } else if(cardSelected == false) {
+                    cardSelected = true;
+                    playerHand[0].setMselected(true);
+                    setSelected(playerHand[0], hand[0]);
+                } else {
+                    cardSelected = true;
+                }
             }
         });
         hand[1].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setSelected(playerHand[1], hand[1]);
+                if(playerHand[1].isSelected()) {
+                    unSelect(playerHand[1], hand[1]);
+                    playerHand[1].setMselected(false);
+                    cardSelected = false;
+                } else if(cardSelected == false) {
+                    cardSelected = true;
+                    playerHand[1].setMselected(true);
+                    setSelected(playerHand[1], hand[1]);
+                } else {
+                    cardSelected = true;
+                }
             }
         });
         hand[2].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setSelected(playerHand[2], hand[2]);
+                if(playerHand[2].isSelected()) {
+                    cardSelected = false;
+                    playerHand[2].setMselected(false);
+                    unSelect(playerHand[2], hand[2]);
+                } else if(cardSelected == false) {
+                    cardSelected = true;
+                    playerHand[2].setMselected(true);
+                    setSelected(playerHand[2], hand[2]);
+                } else {
+                    cardSelected = true;
+                }
             }
         });
         hand[3].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setSelected(playerHand[3], hand[3]);
+                if(playerHand[3].isSelected()) {
+                    cardSelected = false;
+                    playerHand[3].setMselected(false);
+                    unSelect(playerHand[3], hand[3]);
+                } else if(cardSelected == false) {
+                    cardSelected = true;
+                    playerHand[3].setMselected(true);
+                    setSelected(playerHand[3], hand[3]);
+                } else {
+                    cardSelected = true;
+                }
             }
         });
         hand[4].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setSelected(playerHand[4], hand[4]);
+                if(playerHand[4].isSelected()) {
+                    cardSelected = false;
+                    playerHand[4].setMselected(false);
+                    unSelect(playerHand[4], hand[4]);
+                } else if(cardSelected == false) {
+                    cardSelected = true;
+                    playerHand[4].setMselected(true);
+                    setSelected(playerHand[4], hand[4]);
+                } else {
+                    cardSelected = true;
+                }
             }
         });
     }
