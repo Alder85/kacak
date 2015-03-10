@@ -1,9 +1,15 @@
 package com.schzwi.kacak;
 
-import android.media.Image;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 
 
@@ -25,10 +31,89 @@ public class singlePlayer extends ActionBarActivity {
     Card[] discard = new Card[52]; //could hold entire deck if necessary
 
     Card backCard = new Card();
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_player);
+
+    ImageView[] hand = new ImageView[5];
+    public void defineHandViews() {
+        hand[0] = (ImageView)findViewById(R.id.img4_0);
+        hand[1] = (ImageView)findViewById(R.id.img4_1);
+        hand[2] = (ImageView)findViewById(R.id.img4_2);
+        hand[3] = (ImageView)findViewById(R.id.img4_3);
+        hand[4] = (ImageView)findViewById(R.id.img4_4);
+
+        hand[0].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                setSelected(playerHand[0], hand[0]);
+            }
+        });
+        hand[1].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                setSelected(playerHand[1], hand[1]);
+            }
+        });
+        hand[2].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                setSelected(playerHand[2], hand[2]);
+            }
+        });
+        hand[3].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                setSelected(playerHand[3], hand[3]);
+            }
+        });
+        hand[4].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                setSelected(playerHand[4], hand[4]);
+            }
+        });
+    }
+
+    ImageView[] trap = new ImageView[5];
+    public void defineTrapViews() {
+        trap[0] = (ImageView)findViewById(R.id.img3_0);
+        trap[1] = (ImageView)findViewById(R.id.img3_1);
+        trap[2] = (ImageView)findViewById(R.id.img3_2);
+        trap[3] = (ImageView)findViewById(R.id.img3_3);
+        trap[4] = (ImageView)findViewById(R.id.img3_4);
+    }
+
+    ImageView[] monster = new ImageView[5];
+    public void defineMonsterViews() {
+        monster[0] = (ImageView)findViewById(R.id.img2_0);
+        monster[1] = (ImageView)findViewById(R.id.img2_1);
+        monster[2] = (ImageView)findViewById(R.id.img2_2);
+        monster[3] = (ImageView)findViewById(R.id.img2_3);
+        monster[4] = (ImageView)findViewById(R.id.img2_4);
+    }
+
+    ImageView[] cMonster = new ImageView[5];
+    public void defineCMonsterViews() {
+        cMonster[0] = (ImageView)findViewById(R.id.img1_0);
+        cMonster[1] = (ImageView)findViewById(R.id.img1_1);
+        cMonster[2] = (ImageView)findViewById(R.id.img1_2);
+        cMonster[3] = (ImageView)findViewById(R.id.img1_3);
+        cMonster[4] = (ImageView)findViewById(R.id.img1_4);
+    }
+
+    ImageView[] cTrap = new ImageView[5];
+    public void defineCTrapViews() {
+        cTrap[0] = (ImageView)findViewById(R.id.img0_0);
+        cTrap[1] = (ImageView)findViewById(R.id.img0_1);
+        cTrap[2] = (ImageView)findViewById(R.id.img0_2);
+        cTrap[3] = (ImageView)findViewById(R.id.img0_3);
+        cTrap[4] = (ImageView)findViewById(R.id.img0_4);
+    }
+
+    public void defineAllViewsAndClickListeners() {
+        defineHandViews();
+        defineTrapViews();
+        defineMonsterViews();
+        defineCMonsterViews();
+        defineCTrapViews();
+    }
+
+
+
+    public void firstDeal() {
         int count = 0;
         for(int i = 1;i < 5;i++) {  //1-4
             for(int q = 1;q < 14;q++) {  //1-13
@@ -36,7 +121,6 @@ public class singlePlayer extends ActionBarActivity {
                 count++;
             }
         }
-
         int currRand;
         int playerCounter = 0;
         int computerCounter = 0;
@@ -60,7 +144,16 @@ public class singlePlayer extends ActionBarActivity {
                 playerCounter++;
             }
         }
-        shuffleDeck(player); //so suits aren't int order
+
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_single_player);
+
+        defineAllViewsAndClickListeners();
+        firstDeal();
+        shuffleDeck(player); //so suits aren't in order
         updatePlayerHand();
     }
 
@@ -78,19 +171,9 @@ public class singlePlayer extends ActionBarActivity {
                 }
             }
         }
-        ImageView hand1 = (ImageView)findViewById(R.id.img4_0);
-        ImageView hand2 = (ImageView)findViewById(R.id.img4_1);
-        ImageView hand3 = (ImageView)findViewById(R.id.img4_2);
-        ImageView hand4 = (ImageView)findViewById(R.id.img4_3);
-        ImageView hand5 = (ImageView)findViewById(R.id.img4_4);
-
-        hand1.setImageResource(playerHand[0].getImage());
-        hand2.setImageResource(playerHand[1].getImage());
-        hand3.setImageResource(playerHand[2].getImage());
-        hand4.setImageResource(playerHand[3].getImage());
-        hand5.setImageResource(playerHand[4].getImage());
-
-
+        for(int i = 0;i < hand.length;i++) {
+            hand[i].setImageResource(playerHand[i].getImage());
+        }
     }
     /**
      * randomInt simplifies returning a specific random number
@@ -127,21 +210,47 @@ public class singlePlayer extends ActionBarActivity {
         }
     }
 
+    public void setSelected(Card card, ImageView imageview) {
+        Card.setSelected(true);
+        int x = card.getImage();
+        Bitmap bottomImage = BitmapFactory.decodeResource(getResources(), x);
+        Bitmap overlay =  BitmapFactory.decodeResource(getResources(), R.drawable.selected_overlay);
+        Bitmap combined = overlay(bottomImage, overlay);
+        Drawable drawable = new BitmapDrawable(getResources(), combined);
 
+        imageview.setImageDrawable(drawable);
+    }
+
+    public void unSelect(Card card, ImageView imageview) {
+        Card.setSelected(false);
+        int x = card.getImage();
+        Bitmap bottomImage = BitmapFactory.decodeResource(getResources(), x);
+        Drawable drawable = new BitmapDrawable(getResources(), bottomImage);
+        imageview.setImageDrawable(drawable);
+    }
+
+    public static Bitmap overlay(Bitmap bmp1, Bitmap bmp2) {
+        Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Canvas canvas = new Canvas(bmOverlay);
+        canvas.drawBitmap(bmp1, new Matrix(), null); //import could be wrong
+        canvas.drawBitmap(bmp2, 0, 0, null);
+        return bmOverlay;
+    }
+
+    /* nnnnnnnnot used
     public boolean onTouchEvent(MotionEvent touchEvent)
     {
-        ImageView hand1 = (ImageView)findViewById(R.id.img4_0);
         switch(touchEvent.getAction())
         {
             case MotionEvent.ACTION_UP:
             {
-                hand1.setImageResource(backCard.getImage());
+
 
             }
         }
         return false;
     }
-
+    */
 
 }
 
