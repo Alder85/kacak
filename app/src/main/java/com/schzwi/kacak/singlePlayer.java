@@ -45,11 +45,9 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[0].isSelected()) {
                     unSelect(playerHand[0], hand[0]);
-                    playerHand[0].setMselected(false);
                     cardSelected = false;
                 } else if(cardSelected == false) {
                     cardSelected = true;
-                    playerHand[0].setMselected(true);
                     setSelected(playerHand[0], hand[0]);
                 } else {
                     cardSelected = true;
@@ -60,11 +58,9 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[1].isSelected()) {
                     unSelect(playerHand[1], hand[1]);
-                    playerHand[1].setMselected(false);
                     cardSelected = false;
                 } else if(cardSelected == false) {
                     cardSelected = true;
-                    playerHand[1].setMselected(true);
                     setSelected(playerHand[1], hand[1]);
                 } else {
                     cardSelected = true;
@@ -75,11 +71,9 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[2].isSelected()) {
                     cardSelected = false;
-                    playerHand[2].setMselected(false);
                     unSelect(playerHand[2], hand[2]);
                 } else if(cardSelected == false) {
                     cardSelected = true;
-                    playerHand[2].setMselected(true);
                     setSelected(playerHand[2], hand[2]);
                 } else {
                     cardSelected = true;
@@ -90,11 +84,9 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[3].isSelected()) {
                     cardSelected = false;
-                    playerHand[3].setMselected(false);
                     unSelect(playerHand[3], hand[3]);
                 } else if(cardSelected == false) {
                     cardSelected = true;
-                    playerHand[3].setMselected(true);
                     setSelected(playerHand[3], hand[3]);
                 } else {
                     cardSelected = true;
@@ -105,11 +97,9 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[4].isSelected()) {
                     cardSelected = false;
-                    playerHand[4].setMselected(false);
                     unSelect(playerHand[4], hand[4]);
                 } else if(cardSelected == false) {
                     cardSelected = true;
-                    playerHand[4].setMselected(true);
                     setSelected(playerHand[4], hand[4]);
                 } else {
                     cardSelected = true;
@@ -262,7 +252,7 @@ public class singlePlayer extends ActionBarActivity {
     }
 
     public void setSelected(Card card, ImageView imageview) {
-        Card.setSelected(true);
+        card.setSelected(true);
         int x = card.getImage();
         Bitmap bottomImage = BitmapFactory.decodeResource(getResources(), x);
         Bitmap overlay =  BitmapFactory.decodeResource(getResources(), R.drawable.selected_overlay);
@@ -273,7 +263,7 @@ public class singlePlayer extends ActionBarActivity {
     }
 
     public void unSelect(Card card, ImageView imageview) {
-        Card.setSelected(false);
+        card.setSelected(false);
         int x = card.getImage();
         Bitmap bottomImage = BitmapFactory.decodeResource(getResources(), x);
         Drawable drawable = new BitmapDrawable(getResources(), bottomImage);
