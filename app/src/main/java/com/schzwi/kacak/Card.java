@@ -14,7 +14,7 @@ public class Card {
     private int value;
     private boolean activated;
     private boolean revealed = false;
-    private static boolean selected = false;
+    private boolean selected = false;
 
     public Card(int suitIn, int valueIn) {
         if(suitIn > 0 && suitIn <= 4)
@@ -34,9 +34,11 @@ public class Card {
     public void setRevealed(boolean x) {
         revealed = x;
     }
-
-    public static void setSelected(boolean x) {
+    public void setSelected(boolean x) {
         selected = x;
+    }
+    public boolean isSelected() {
+        return selected;
     }
     public int getAttack() {
         if(isLowMonster())
@@ -73,6 +75,10 @@ public class Card {
 
     public boolean isLowMonster() {
         return value >= 6 && value <= 9;
+    }
+
+    public boolean isMonster() {
+        return (value > 5 || value == 1);
     }
 
     public boolean isAce() {
