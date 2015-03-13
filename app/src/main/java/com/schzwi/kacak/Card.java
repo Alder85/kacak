@@ -77,6 +77,10 @@ public class Card {
         return value >= 6 && value <= 9;
     }
 
+    public boolean isMonster() {
+        return (value > 5 || value == 1);
+    }
+
     public boolean isAce() {
         return value == 1;
     }

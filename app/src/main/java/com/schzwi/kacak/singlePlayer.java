@@ -16,7 +16,7 @@ import android.widget.ImageView;
 public class singlePlayer extends ActionBarActivity {
 
     int player = 0, computer = 47;
-    boolean cardSelected;
+    int cardSelected = -1;
     Card[] cardArray = new Card[52];
 
     Card[] playerDeck = new Card[26];
@@ -32,6 +32,7 @@ public class singlePlayer extends ActionBarActivity {
     Card[] discard = new Card[52]; //could hold entire deck if necessary
 
     Card backCard = new Card();
+    Card tempCardStorage = new Card();
 
     ImageView[] hand = new ImageView[5];
     public void defineHandViews() {
@@ -45,12 +46,13 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[0].isSelected()) {
                     unSelect(playerHand[0], hand[0]);
-                    cardSelected = false;
-                } else if(cardSelected == false) {
-                    cardSelected = true;
+                    cardSelected = -1;
+                } else if(cardSelected == -1) {
+                    tempCardStorage = playerHand[0];
+                    cardSelected = 0;
                     setSelected(playerHand[0], hand[0]);
                 } else {
-                    cardSelected = true;
+                    cardSelected = 0;
                 }
             }
         });
@@ -58,51 +60,55 @@ public class singlePlayer extends ActionBarActivity {
             public void onClick(View view) {
                 if(playerHand[1].isSelected()) {
                     unSelect(playerHand[1], hand[1]);
-                    cardSelected = false;
-                } else if(cardSelected == false) {
-                    cardSelected = true;
+                    cardSelected = -1;
+                } else if(cardSelected == -1) {
+                    tempCardStorage = playerHand[1];
+                    cardSelected = 1;
                     setSelected(playerHand[1], hand[1]);
                 } else {
-                    cardSelected = true;
+                    cardSelected = 1;
                 }
             }
         });
         hand[2].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if(playerHand[2].isSelected()) {
-                    cardSelected = false;
+                    cardSelected = -1;
                     unSelect(playerHand[2], hand[2]);
-                } else if(cardSelected == false) {
-                    cardSelected = true;
+                } else if(cardSelected == -1) {
+                    tempCardStorage = playerHand[2];
+                    cardSelected = 2;
                     setSelected(playerHand[2], hand[2]);
                 } else {
-                    cardSelected = true;
+                    cardSelected = 2;
                 }
             }
         });
         hand[3].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if(playerHand[3].isSelected()) {
-                    cardSelected = false;
+                    cardSelected = -1;
                     unSelect(playerHand[3], hand[3]);
-                } else if(cardSelected == false) {
-                    cardSelected = true;
+                } else if(cardSelected == -1) {
+                    tempCardStorage = playerHand[3];
+                    cardSelected = 3;
                     setSelected(playerHand[3], hand[3]);
                 } else {
-                    cardSelected = true;
+                    cardSelected = 3;
                 }
             }
         });
         hand[4].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if(playerHand[4].isSelected()) {
-                    cardSelected = false;
+                    cardSelected = -1;
                     unSelect(playerHand[4], hand[4]);
-                } else if(cardSelected == false) {
-                    cardSelected = true;
+                } else if(cardSelected == -1) {
+                    tempCardStorage = playerHand[4];
+                    cardSelected = 4;
                     setSelected(playerHand[4], hand[4]);
                 } else {
-                    cardSelected = true;
+                    cardSelected = 4;
                 }
             }
         });
@@ -115,6 +121,12 @@ public class singlePlayer extends ActionBarActivity {
         trap[2] = (ImageView)findViewById(R.id.img3_2);
         trap[3] = (ImageView)findViewById(R.id.img3_3);
         trap[4] = (ImageView)findViewById(R.id.img3_4);
+
+        trap[0].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     ImageView[] monster = new ImageView[5];
@@ -124,6 +136,85 @@ public class singlePlayer extends ActionBarActivity {
         monster[2] = (ImageView)findViewById(R.id.img2_2);
         monster[3] = (ImageView)findViewById(R.id.img2_3);
         monster[4] = (ImageView)findViewById(R.id.img2_4);
+
+
+
+
+        monster[0].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if(cardSelected > -1 && tempCardStorage.isMonster()) {
+                    playerHand[cardSelected] = null;
+                    cardSelected = -1;
+                    playerMonsters[0] = tempCardStorage;
+                    for(int i = 0; i < 5; i++) {
+                        if(playerMonsters[i] != null) {
+                            monster[i].setImageResource(playerMonsters[i].getImage());
+                        }
+                    }
+                    updatePlayerHand();
+                }
+            }
+        });
+        monster[1].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if(cardSelected > -1 && tempCardStorage.isMonster()) {
+                    playerHand[cardSelected] = null;
+                    cardSelected = -1;
+                    playerMonsters[1] = tempCardStorage;
+                    for(int i = 0; i < 5; i++) {
+                        if(playerMonsters[i] != null) {
+                            monster[i].setImageResource(playerMonsters[i].getImage());
+                        }
+                    }
+                    updatePlayerHand();
+                }
+            }
+        });
+        monster[2].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (cardSelected > -1 && tempCardStorage.isMonster()) {
+                    playerHand[cardSelected] = null;
+                    cardSelected = -1;
+                    playerMonsters[2] = tempCardStorage;
+                    for(int i = 0; i < 5; i++) {
+                        if(playerMonsters[i] != null) {
+                            monster[i].setImageResource(playerMonsters[i].getImage());
+                        }
+                    }
+                    updatePlayerHand();
+                }
+            }
+        });
+        monster[3].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (cardSelected > -1 && tempCardStorage.isMonster()) {
+                    playerHand[cardSelected] = null;
+                    cardSelected = -1;
+                    playerMonsters[3] = tempCardStorage;
+                    for(int i = 0; i < 5; i++) {
+                        if(playerMonsters[i] != null) {
+                            monster[i].setImageResource(playerMonsters[i].getImage());
+                        }
+                    }
+                    updatePlayerHand();
+                }
+            }
+        });
+        monster[4].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if(cardSelected > -1 && tempCardStorage.isMonster()) {
+                    playerHand[cardSelected] = null;
+                    cardSelected = -1;
+                    playerMonsters[4] = tempCardStorage;
+                    for(int i = 0; i < 5; i++) {
+                        if(playerMonsters[i] != null) {
+                            monster[i].setImageResource(playerMonsters[i].getImage());
+                        }
+                    }
+                    updatePlayerHand();
+                }
+            }
+        });
     }
 
     ImageView[] cMonster = new ImageView[5];
