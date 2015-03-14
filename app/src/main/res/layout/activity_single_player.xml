@@ -7,10 +7,10 @@
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="413dp"
         android:stretchColumns="*"
         tools:context="com.schzwi.kacak.singlePlayer"
-        android:weightSum="5">
+        android:weightSum="4">
 
         <!-- 1 -->
         <TableRow
@@ -248,16 +248,31 @@
         <!-- 4 -->
         <View
             android:layout_height="2dip"
-            android:background="#FF0000" />
+                   android:background="#FF0000" />
+
+        </TableLayout>
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="*"
+        tools:context="com.schzwi.kacak.singlePlayer">
+
+
 
         <!-- 5 -->
         <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            >
-
+            android:weightSum="6">
+            <Button
+                android:layout_width="12dip"
+                android:layout_height="100dip"
+                android:text="Next Phase"
+                android:onClick="nextPhase"
+                android:layout_column="0"
+                android:layout_weight="1"/>
             <ImageView
                 android:adjustViewBounds="true"
                 android:maxHeight="10dip"
@@ -265,7 +280,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_0"
-                android:layout_column="0"/>
+                android:layout_column="1"
+                android:layout_weight="1"/>
 
             <ImageView
                 android:adjustViewBounds="true"
@@ -274,7 +290,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_1"
-                android:layout_column="1"/>
+                android:layout_column="2"
+                android:layout_weight="1"/>
 
             <ImageView
                 android:adjustViewBounds="true"
@@ -283,15 +300,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/img4_2"
-                android:layout_column="2"/>
-
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxHeight="10dip"
-                android:maxWidth="4dip"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/img4_3"
                 android:layout_column="3"/>
 
             <ImageView
@@ -300,8 +308,17 @@
                 android:maxWidth="4dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/img4_4"
+                android:id="@+id/img4_3"
                 android:layout_column="4"/>
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:maxHeight="10dip"
+                android:maxWidth="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/img4_4"
+                android:layout_column="5"/>
 
         </TableRow>
     </TableLayout>
