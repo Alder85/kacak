@@ -24,6 +24,10 @@
             android:name=".multiPlayer"
             android:label="@string/title_activity_multi_player" >
         </activity>
+        <activity
+            android:name=".Campaign"
+            android:label="@string/title_activity_campaign" >
+        </activity>
     </application>
 
 </manifest>

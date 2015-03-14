@@ -26,6 +26,11 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void startCampaign(View view) {
+        Intent intent = new Intent(this, Campaign.class);
+        startActivity(intent);
+    }
+
     /** @TODO decide if i want to use the options bar
     /*
     @Override
