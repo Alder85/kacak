@@ -17,6 +17,10 @@ public class singlePlayer extends ActionBarActivity {
 
     int player = 0, computer = 47;
     int cardSelected = -1;
+    String turnPhase = "";
+    boolean playerTurn;
+    int playerHealth;
+    int computerHealth;
     Card[] cardArray = new Card[52];
 
     Card[] playerDeck = new Card[26];
@@ -194,6 +198,16 @@ public class singlePlayer extends ActionBarActivity {
         updatePlayerHand();
     }
 
+    public void nextPhase(View view) {
+        if(turnPhase == "main phase") {
+            turnPhase = "battle phase";
+        } else if(turnPhase == "battle phase") {
+            turnPhase = "draw phase";
+            playerTurn = !playerTurn;
+        } else {
+            turnPhase = "draw phase";
+        }
+    }
     public void playerHandClicked(int handNum) {
         if (playerHand[handNum] != null) {
             if (playerHand[handNum].isSelected()) {
