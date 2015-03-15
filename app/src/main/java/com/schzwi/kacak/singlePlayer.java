@@ -208,6 +208,7 @@ public class singlePlayer extends ActionBarActivity {
             turnPhase = "draw phase";
         }
     }
+
     public void playerHandClicked(int handNum) {
         if (playerHand[handNum] != null) {
             if (playerHand[handNum].isSelected()) {
